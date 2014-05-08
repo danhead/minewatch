@@ -21,24 +21,6 @@ var formatLastShare = function(a) {
 	var date = new Date(a*1000);
 	var h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
 	return (h<10?"0"+h:h) + ":" + (m<10?"0"+m:m) + ":" + (s<10?"0"+s:s);
-	/*
-	var result, suffix;
-	if(a<60) {
-		result = a;
-		suffix = "sec";
-	} else if((a/60)<60) {
-		result = (a/60).toFixed(0);
-		suffix = "minute";
-	} else if((a/60/60)<24) {
-		result = (a/60/60).toFixed(0);
-		suffix = "hour";
-	} else {
-		result = (a/60/60/24).toFixed(0);
-		suffix = "day";
-	}
-	if(result>1) suffix+="s";
-	return result + " " + suffix;
-	*/
 }
 
 var calcSendProgress = function(amount,send) {

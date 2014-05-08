@@ -84,26 +84,6 @@ static int update_rate = 1;
 static int current_min;
 static int last_update_min;
 
-/*
-char *translate_error(AppMessageResult result) {
-  switch (result) {
-    case APP_MSG_OK: return "APP_MSG_OK";
-    case APP_MSG_SEND_TIMEOUT: return "APP_MSG_SEND_TIMEOUT";
-    case APP_MSG_SEND_REJECTED: return "APP_MSG_SEND_REJECTED";
-    case APP_MSG_NOT_CONNECTED: return "APP_MSG_NOT_CONNECTED";
-    case APP_MSG_APP_NOT_RUNNING: return "APP_MSG_APP_NOT_RUNNING";
-    case APP_MSG_INVALID_ARGS: return "APP_MSG_INVALID_ARGS";
-    case APP_MSG_BUSY: return "APP_MSG_BUSY";
-    case APP_MSG_BUFFER_OVERFLOW: return "APP_MSG_BUFFER_OVERFLOW";
-    case APP_MSG_ALREADY_RELEASED: return "APP_MSG_ALREADY_RELEASED";
-    case APP_MSG_CALLBACK_ALREADY_REGISTERED: return "APP_MSG_CALLBACK_ALREADY_REGISTERED";
-    case APP_MSG_CALLBACK_NOT_REGISTERED: return "APP_MSG_CALLBACK_NOT_REGISTERED";
-    case APP_MSG_OUT_OF_MEMORY: return "APP_MSG_OUT_OF_MEMORY";
-    case APP_MSG_CLOSED: return "APP_MSG_CLOSED";
-    case APP_MSG_INTERNAL_ERROR: return "APP_MSG_INTERNAL_ERROR";
-    default: return "UNKNOWN ERROR";
-  }
-}*/
 static void show_refresh(bool refreshing) {
   gbitmap_destroy(refresh_icon);
   if(refreshing) refresh_icon = gbitmap_create_with_resource(RESOURCE_ID_ICON_REFRESH);
@@ -113,17 +93,14 @@ static void show_refresh(bool refreshing) {
   layer_set_hidden(bitmap_layer_get_layer(refresh_layer),false);
 }
 static void timeout_callback(void * data) {
-  APP_LOG(APP_LOG_LEVEL_DEBUG,"timout called");
   show_refresh(false);
 }
 static void fetch_msg(void) {
 
-  //APP_LOG(APP_LOG_LEVEL_DEBUG,"Update int: %u", update_rate);
   //Make sure we don't request more than once per min (be nice to Mr Slush)
   if(current_min == last_update_min) return;
   last_update_min = current_min;
   Tuplet fetch_tuple = TupletInteger(0x0, 1);
-  APP_LOG(APP_LOG_LEVEL_DEBUG,"requesting");
   timeout_timer = app_timer_register(timeout_length,timeout_callback, NULL);
   show_refresh(true);
   DictionaryIterator *iter;
@@ -265,7 +242,6 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
   }
   //SHOW BTC VALUES or ERROR
   Tuple *response_tuple = dict_find(iter, RESPONSE);
-  APP_LOG(APP_LOG_LEVEL_DEBUG,response_tuple->value->cstring);
   if(response_tuple) {
     if(strcmp(response_tuple->value->cstring,"NoAPI")==0) {
       layer_set_hidden(btc_parent_layer,true);
@@ -288,12 +264,10 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
 }
 
 static void in_dropped_handler(AppMessageResult reason, void *context) {
-  //APP_LOG(APP_LOG_LEVEL_DEBUG,"in dropped %i - %s",reason,translate_error(reason));
   show_refresh(false);
 }
 
 static void out_failed_handler(DictionaryIterator *failed, AppMessageResult reason, void *context) {
-  //app_log(APP_LOG_LEVEL_DEBUG,"out failed %i - %s",reason,translate_error(reason));
   show_refresh(false);
 }
 
