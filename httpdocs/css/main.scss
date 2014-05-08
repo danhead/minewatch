@@ -1,0 +1,56 @@
+$darkgrey: #4d4d4d;
+$red: red;
+$lightred: #ffcdcd;
+h1, h2, h3, .footer {
+  font-family:"Holtwood One SC";
+  color: $darkgrey;
+}
+.heading {
+  margin: 20px auto;
+  h1 {
+    font-size:250%;
+  }
+  h2 {
+    font-size:120%;
+  }
+  ul {
+    list-style-type: circle;
+  }
+}
+@media only screen and (max-width: 48em) {
+  .heading {
+    margin-top:5px;
+    h1, h2, .pebble-img {text-align: center;}
+    .pebble-img {
+      margin: 10px auto;
+    }
+  }
+}
+@media only screen and (min-width: 48em) {
+  .heading {
+    h1 {
+      margin-top: 40px;
+    }
+    .panel {
+      border: none;
+      margin-bottom: 0;
+      padding: 0;
+      background: none;
+    }
+  }
+}
+.social {
+  > div, > iframe {
+    display:block;
+    margin-bottom: 10px;
+  }
+}
+.donate form { float: left; }
+.footer { text-align: center; }
+.error {
+  font-weight: bold;
+  color: $red;
+}
+input.red, textarea.red {
+  background-color: $lightred;
+}

@@ -1,0 +1,98 @@
+{
+  "uuid": "f49639f7-0d74-4501-b629-bea307bdf4e9",
+  "shortName": "MineWatch",
+  "longName": "MineWatch",
+  "companyName": "Daniel Head",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "capabilities": [ "configurable" ],
+  "appKeys": {
+    "response":1,
+    "update":2,
+    "dark":3,
+    "notify":4,
+    "flick":5,
+    "workers": 10,
+    "hashrate": 11,
+    "lastshare": 12,
+    "reward": 13,
+    "sendprogress": 14
+  },
+  "resources": {
+    "media": [
+      {
+        "type":"png",
+        "name":"ICON_WORKER",
+        "file":"icons/worker.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_GRAPH",
+        "file":"icons/graph.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_CLOCK",
+        "file":"icons/clock.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BTC",
+        "file":"icons/btc.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BLUETOOTH",
+        "file":"icons/bluetooth.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_0",
+        "file":"icons/battery_0.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_20",
+        "file":"icons/battery_20.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_40",
+        "file":"icons/battery_40.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_60",
+        "file":"icons/battery_60.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_80",
+        "file":"icons/battery_80.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_100",
+        "file":"icons/battery_100.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_BATTERY_CHARGING",
+        "file":"icons/battery_charging.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_REFRESH",
+        "file":"icons/refresh.png"
+      },
+      {
+        "type":"png",
+        "name":"ICON_REFRESH_FAIL",
+        "file":"icons/refresh_fail.png"
+      }
+    ]
+  }
+}

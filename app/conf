@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -a -e ssh config colony.danielhead.com:/var/www/minewatch/ --progress
