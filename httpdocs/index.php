@@ -24,13 +24,13 @@ define("accessAllowed", true);
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 <div class="row heading">
-    <div class="show-for-medium-up medium-4 columns"><img src="img/pebble.png" alt="Pebble"/></div>
+    <div class="show-for-medium-up medium-4 columns"><img src="img/pebble_white.png" alt="Pebble"/></div>
     <div class="medium-8 small-12 columns">
         <h1>MineWatch</h1>
 
         <h2>Your Bitcoin workers, now on your wrist</h2>
 
-        <div class="show-for-small pebble-img"><img src="img/pebble.png" alt="Pebble"/></div>
+        <div class="show-for-small pebble-img"><img src="img/pebble_white.png" alt="Pebble"/></div>
         <div class="panel">
             <h3 class="show-for-small">Features</h3>
             <ul class="features">
@@ -46,13 +46,15 @@ define("accessAllowed", true);
 
 <div class="row">
     <div class="large-12 columns">
-        <div class="panel">
-            <h3>Coming soon</h3>
+        <div class="panel news">
+            <h3>NEWS</h3>
+            <hr/>
+            <h4>MineWatch released</h4>
+            <p class="date">by Dan &ndash; 8th May at 21:42</p>
 
-            <p>To the Pebble App Store.</p>
+            <p>MineWatch has been published to the Pebble Appstore today. It is available immediately on Android and is currently pending approval on iOS, this process should take no more than 2 weeks.</p>
 
-            <p>At launch the watch face will only support Slush's Pool API, I am happy to add support for other mining pools
-                upon request. Please <a href="#contactform">Contact me</a> to request support.</p>
+            <p>The watchface currently only supports Slush's Pool, please fill out the form below if you with to request support for other Pools.</p>
         </div>
     </div>
 </div>

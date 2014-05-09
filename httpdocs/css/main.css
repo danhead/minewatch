@@ -11,6 +11,11 @@ h1, h2, h3, .footer {
   .heading ul {
     list-style-type: circle; }
 
+.panel.news h4, .panel.news p.date {
+  display: inline-block; }
+.panel.news p.date {
+  font-size: 0.8em; }
+
 @media only screen and (max-width: 48em) {
   .heading {
     margin-top: 5px; }

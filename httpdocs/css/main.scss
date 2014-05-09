@@ -8,13 +8,22 @@ h1, h2, h3, .footer {
 .heading {
   margin: 20px auto;
   h1 {
-    font-size:250%;
+    font-size: 250%;
   }
   h2 {
-    font-size:120%;
+    font-size: 120%;
   }
   ul {
     list-style-type: circle;
+  }
+
+}
+.panel.news {
+  h4, p.date {
+    display: inline-block;
+  }
+  p.date {
+    font-size:0.8em;
   }
 }
 @media only screen and (max-width: 48em) {
