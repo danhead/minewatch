@@ -4,6 +4,7 @@
 static Window *window;
 static GFont font_xs, font_s, font_m, font_l;
 static InverterLayer *inverter_layer;
+static char *version_number = "1.0.2";
 
 //TIME/DATE
 static TextLayer *time_layer;
@@ -13,7 +14,7 @@ static char date_text[] = "00 Xxxxxxxxx";
 
 //REFRESH ICON
 static AppTimer *timeout_timer;
-static int timeout_length = 15000; //ms
+//static int timeout_length = 65000; //ms
 static BitmapLayer *refresh_layer;
 static GBitmap *refresh_icon;
 
@@ -59,6 +60,7 @@ static int progress_width = 0;
 
 //KEYS
 enum {
+  VERSION = 0x0,
   RESPONSE = 0x1,
   UPDATE = 0x2,
   DARK = 0x3,
@@ -100,8 +102,8 @@ static void fetch_msg(void) {
   //Make sure we don't request more than once per min (be nice to Mr Slush)
   if(current_min == last_update_min) return;
   last_update_min = current_min;
-  Tuplet fetch_tuple = TupletInteger(0x0, 1);
-  timeout_timer = app_timer_register(timeout_length,timeout_callback, NULL);
+
+  //timeout_timer = app_timer_register(timeout_length,timeout_callback, NULL);
   show_refresh(true);
   DictionaryIterator *iter;
   app_message_outbox_begin(&iter);
@@ -109,11 +111,11 @@ static void fetch_msg(void) {
   if (iter == NULL) {
     return;
   }
-
-  dict_write_tuplet(iter, &fetch_tuple);
+  dict_write_cstring(iter, VERSION, version_number);
   dict_write_end(iter);
 
-  app_message_outbox_send();
+  uint32_t appMsgResp = app_message_outbox_send();
+  if(appMsgResp != APP_MSG_OK) show_refresh(false);
 }
 
 static void handle_flick(AccelAxisType axis, int32_t direction) {
@@ -258,7 +260,7 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
       layer_set_hidden(btc_parent_layer,false);
       strcpy(last_update_text,time_text);
     }
-    app_timer_cancel(timeout_timer);
+    //app_timer_cancel(timeout_timer);
     if(strcmp(response_tuple->value->cstring,"TIMEOUT")!=0) layer_set_hidden(bitmap_layer_get_layer(refresh_layer),true);
   }
 }
@@ -483,7 +485,7 @@ static void init(void) {
   bluetooth_connection_service_subscribe(handle_bluetooth);
   tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);
   if(flick) enable_flick(true);
-  timeout_timer = app_timer_register(timeout_length,timeout_callback, NULL);
+  //timeout_timer = app_timer_register(timeout_length,timeout_callback, NULL);
 }
 
 static void deinit(void) {

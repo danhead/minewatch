@@ -1,4 +1,6 @@
 var config = {
+	"jsversion":"1.0.2",
+	"pblversion":(localStorage.getItem("pblversion") || ""),
 	"dark":((localStorage.getItem("dark") == "true")?true:false),
 	"notify":((localStorage.getItem("notify") == "true")?true:false),
 	"flick":((localStorage.getItem("flick") == "true")?true:false),
@@ -35,13 +37,7 @@ var sendResponseWithUpdate = function(obj) {
 		return;
 	}
 	var req = new XMLHttpRequest();
-	req.timeout = 30000;
-	req.ontimeout = function() {
-		if(!obj) obj = {};
-		obj["response"] = "TIMEOUT";
-		Pebble.sendAppMessage(obj);
-	}
-	req.onload = function(e) {
+	req.onreadystatechange = function() {
 		if (req.readyState == 4) {
 			if(req.status == 200) {
 				var response = JSON.parse(req.responseText);
@@ -78,13 +74,15 @@ var sendResponseWithUpdate = function(obj) {
 				obj["response"] = "InvAPI";
 				Pebble.sendAppMessage(obj);
 			}
-		} else {
-			if(!obj) obj = {};
-			obj["response"] = "TIMEOUT";
-			Pebble.sendAppMessage(obj);
 		}
 	}
 	req.open('GET', "https://mining.bitcoin.cz/accounts/profile/json/" + config.apikey, true);
+	req.timeout = 30000;
+	req.ontimeout = function() {
+		if(!obj) obj = {};
+		obj["response"] = "TIMEOUT";
+		Pebble.sendAppMessage(obj);
+	}
 	req.send(null);
 }
 var getSettings = function() {
@@ -101,6 +99,10 @@ Pebble.addEventListener("ready", function(e) {
 });
 
 Pebble.addEventListener("appmessage", function(e) {
+	if(e.payload.version) {
+		config.pblversion = e.payload.version;
+		localStorage.setItem("pblversion",e.payload.version);
+	}
 	sendResponseWithUpdate();
 });
 Pebble.addEventListener("showConfiguration", function(e) {

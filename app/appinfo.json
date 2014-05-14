@@ -3,13 +3,14 @@
   "shortName": "MineWatch",
   "longName": "MineWatch",
   "companyName": "Daniel Head",
-  "versionCode": 2,
-  "versionLabel": "1.0.1",
+  "versionCode": 3,
+  "versionLabel": "1.0.2",
   "watchapp": {
     "watchface": true
   },
   "capabilities": [ "configurable" ],
   "appKeys": {
+    "version":0,
     "response":1,
     "update":2,
     "dark":3,

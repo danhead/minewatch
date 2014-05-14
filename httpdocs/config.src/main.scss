@@ -107,6 +107,9 @@ ul.updates {
 			font-size: 0.8em;
 		}
 	}
+  h3 > span {
+    color: red;
+  }
 }
 a#save {
 	display:block;
@@ -119,4 +122,8 @@ a#save {
 	margin: 10px;
 	background-color: $blue;
 	color: white;
+}
+p#versioninfo {
+  display: none;
+  font-size:0.6em;
 }

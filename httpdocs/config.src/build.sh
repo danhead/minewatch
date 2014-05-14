@@ -1,6 +1,6 @@
 #!/bin/bash
 scss -t compressed main.scss main.css
-java -jar /home/dan/.local/share/gcc/compiler.jar --compilation_level SIMPLE_OPTIMIZATIONS main.js > main-min.js
+java -jar /Users/dan/.local/share/gcc/compiler.jar --compilation_level SIMPLE_OPTIMIZATIONS main.js > main-min.js
 touch index.html
 echo '<!DOCTYPE html>' > index.html
 echo '<head>' >> index.html

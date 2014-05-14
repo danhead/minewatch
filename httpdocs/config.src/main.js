@@ -15,6 +15,7 @@ var form = function() {
 	};
 	this.config = this.getConfig();
 	this.updateForm();
+    this.showVersion(this.config.pblversion,this.config.jsversion);
 	this.attach();
 }
 form.prototype.getConfig = function() {
@@ -25,6 +26,8 @@ form.prototype.getConfig = function() {
   	  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 	var config = {};
+    config.jsversion = getParameterByName("jsversion");
+    config.pblversion = getParameterByName("pblversion");
 	config.apikey = getParameterByName("apikey");
 	config.update = getParameterByName("update");
 	config.dark = (getParameterByName("dark") == "true")?true:false;
@@ -57,6 +60,21 @@ form.prototype.updateForm = function() {
 		this.el.flick.className = "off";
 		this.el.flick.children[0].innerHTML = "OFF";
 	}
+}
+form.prototype.showVersion = function(pbl,js) {
+    var version = (pbl)?pbl:js;
+    var listItems = document.getElementsByClassName("app-version");
+    for (var i=0;i<listItems.length;i++) {
+        if(listItems[i].getAttribute("data-version") == version) {
+            var h3 = listItems[i].getElementsByTagName("h3")[0];
+            h3.innerHTML = h3.innerHTML + " &ndash; <span>INSTALLED</span>";
+        }
+    }
+    if(pbl && js) {
+        document.getElementById("appversioninfo").innerHTML = pbl;
+        document.getElementById("jsversioninfo").innerHTML = js;
+        document.getElementById("versioninfo").style.display = "inline";
+    }
 }
 form.prototype.attach = function() {
 	var that = this;

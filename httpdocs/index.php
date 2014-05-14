@@ -49,6 +49,17 @@ define("accessAllowed", true);
         <div class="panel news">
             <h3>NEWS</h3>
             <hr/>
+            <h4>MineWatch updated to 1.0.2</h4>
+            <p class="date">by Dan &ndash; 15th May at 19:42</p>
+
+            <p>v1.0.2 includes the following fixes:</p>
+
+            <ul>
+                <li>Increase timeout from 10 to 30 seconds</li>
+                <li>Update settings to show installed version</li>
+            </ul>
+
+            <hr/>
             <h4>MineWatch released</h4>
             <p class="date">by Dan &ndash; 8th May at 21:42</p>
 
