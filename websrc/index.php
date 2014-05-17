@@ -7,10 +7,9 @@ define("accessAllowed", true);
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>MineWatch &ndash; Your Bitcoin workers, now on your wrist</title>
-    <link rel="stylesheet" href="css/foundation.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
+    <!-- fileblock:css styles -->
+    <!-- endfileblock -->
     <link href='http://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
-    <script src="js/vendor/modernizr.js"></script>
     <script src="http://coinwidget.com/widget/coin.js"></script>
 </head>
 <body>
@@ -153,9 +152,8 @@ define("accessAllowed", true);
     </div>
 </div>
 
-<script src="js/vendor/jquery.js"></script>
-<script src="js/foundation.min.js"></script>
-<script src="js/main.js"></script>
+<!-- fileblock:js app -->
+<!-- endfileblock -->
 <script>
     $(document).foundation();
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -1,0 +1,20 @@
+{
+  "name": "MineWatch",
+  "version": "1.0.2",
+  "authors": [
+    "Dan Head <me@danielhead.com>"
+  ],
+  "license": "MIT",
+  "homepage": "http://danielhead.com/minewatch",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.2.2"
+  }
+}
