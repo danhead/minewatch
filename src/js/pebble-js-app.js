@@ -111,7 +111,7 @@ Pebble.addEventListener("showConfiguration", function(e) {
 		if(config[i] != "error") str += i + "=" + config[i] + "&";
 	}
 	str = str.substring(0, str.length - 1);
-	Pebble.openURL("http://danielhead.com/minewatch/config" + str);
+	Pebble.openURL("https://danielhead.com/minewatch/config" + str);
 });
 
 Pebble.addEventListener("webviewclosed", function(e) {
