@@ -1,7 +1,3 @@
-.sass-cache/
-.DS_Store
-node_modules/
-bower_components/
-.idea/
-build/
-.lock*
+
+# Ignore build generated files
+build
